@@ -15,8 +15,8 @@ All original functionality and license terms from GDPC are retained (see [LICENS
 
 ---
 
-## Assignment Context & Requirements
-**MGAIA Procedural Content Generation Assignment 1** tasked us with:
+## Context & Requirements
+** Procedural Content Generation ** tasked us with:
 
 1. **Believable placement & terrain adaptation**:  
    • Analyze the selected build area (100×100 blocks).  
@@ -31,12 +31,11 @@ All original functionality and license terms from GDPC are retained (see [LICENS
    • Interior: randomly colored carpet, bed, chairs.  
    • Exterior: oak fence, birch-tree garden, lantern poles, torches/hanging lanterns, guard villager.
 
-4. **Procedural variation (40% of grade)**:  
+4. **Procedural variation **:  
    • Randomized lantern styles, tree canopies, carpet/bed colors, chimney campfire, variation in garden tree positions.  
    • Every run produces a slightly different layout and color scheme.
 
-5. **Scientific report**:  
-   • Includes terrain-evaluation plots, algorithmic explanations, variation examples, and conclusions (see `report.pdf`).
+
 
 ---
 
@@ -65,9 +64,3 @@ All original functionality and license terms from GDPC are retained (see [LICENS
   - Handles keyboard interrupt gracefully.
 
 ---
-
-## Installation & Usage
-1. **Clone this repo**:  
-   ```bash
-   git clone https://github.com/YourUser/mgaia-housing-pcg.git
-   cd mgaia-housing-pcg
