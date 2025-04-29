@@ -44,11 +44,51 @@ except InterfaceConnectionError:
 
 # Place a block of red concrete at (0,80,0)!
 editor.placeBlock((0,80,0), Block("red_concrete"))
+editor.placeBlock((0,81,0), Block("prismarine")) #new
+editor.placeBlock((0,79,0), Block("prismarine"))
+editor.placeBlock((0,78,0), Block("prismarine"))
+editor.placeBlock((0,76,0), Block("prismarine"))
+editor.placeBlock((0,74,0), Block("prismarine"))
+
+editor.placeBlock((0,73,0), Block("prismarine"))
+editor.placeBlock((0,72,0), Block("prismarine"))
+editor.placeBlock((0,71,0), Block("prismarine"))
+editor.placeBlock((0,70,0), Block("prismarine"))
 
 
 # Retrieve the block at (0,80,0) and print it.
 block = editor.getBlock((0,80,0))
 print(f"Block at (0,80,0): {block}")
+
+block = editor.getBlock((0,81,0))
+print(f"Block at (0,81,0): {block}") #new
+
+block = editor.getBlock((0,79,0))
+print(f"Block at (0,79,0): {block}") #new
+
+block = editor.getBlock((0,78,0))
+print(f"Block at (0,78,0): {block}") #new
+
+block = editor.getBlock((0,76,0))
+print(f"Block at (0,76,0): {block}") #new
+
+block = editor.getBlock((0,75,0))
+print(f"Block at (0,75,0): {block}") #new
+
+block = editor.getBlock((0,74,0))
+print(f"Block at (0,74,0): {block}") #new
+
+block = editor.getBlock((0,73,0))
+print(f"Block at (0,73,0): {block}") #new
+
+block = editor.getBlock((0,72,0))
+print(f"Block at (0,72,0): {block}") #new
+
+block = editor.getBlock((0,71,0))
+print(f"Block at (0,71,0): {block}") #new
+
+block = editor.getBlock((0,70,0))
+print(f"Block at (0,70,0): {block}") #new
 
 
 # Tip: to get the ID of a block in Minecraft (like "red_concrete"), press F3 and point at the

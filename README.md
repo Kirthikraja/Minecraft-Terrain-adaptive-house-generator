@@ -1,51 +1,73 @@
-# GDPC
+# Procedural House & Garden Generator (MGAIA Assignment 1)
 
-GDPC (Generative Design Python Client) is a Python framework for the [GDMC HTTP
-Interface mod](https://github.com/Niels-NTG/gdmc_http_interface) for Minecraft
-Java edition.
+This repository extends **GDPC** (Generative Design Python Client) to automatically analyze terrain in a Minecraft world slice, select a stable build platform, and procedurally generate a richly detailed house and garden—meeting the requirements of the MGAIA Assignment 1 at Leiden University (February 2025).
 
-The GDMC HTTP mod implements a HTTP interface that allows you to edit a
-Minecraft world live, while you're playing in it, making it possible to rapidly
-iterate on generative algorithms. GDPC provides Python bindings for the
-GDMC-HTTP interface, along with many high-level tools that make development much
-easier.
+---
 
-GDPC is primarily designed for the [Generative Design in Minecraft Competition
-(GDMC)](https://gendesignmc.wikidot.com/), a yearly competition for procedural
-generation in Minecraft where the challenge is to write an algorithm that
-creates a settlement that adapts to the pre-existing terrain. Feel free to join
-us on [Discord](https://discord.gg/YwpPCRQWND)!
+## Origins
+This project is based on the [GDPC](https://github.com/avdstaaij/gdpc) framework by the GDMC community. We have forked and extended the original code to implement:
 
+- Advanced terrain analysis and visualization (heatmaps, scatter plots).  
+- Stable-platform selection via statistical filters and connected-area analysis.  
+- Fully procedural garden and house construction with randomized variation.  
 
-## Quick example
+All original functionality and license terms from GDPC are retained (see [LICENSE](LICENSE)).
 
-```python
-from gdpc import Editor, Block, geometry
+---
 
-editor = Editor(buffering=True)
+## Assignment Context & Requirements
+**MGAIA Procedural Content Generation Assignment 1** tasked us with:
 
-# Get a block
-block = editor.getBlock((0,48,0))
+1. **Believable placement & terrain adaptation**:  
+   • Analyze the selected build area (100×100 blocks).  
+   • Identify a flattest, stable region above water level.  
+   • Insert structures with minimal environmental disruption.
 
-# Place a block
-editor.placeBlock((0,80,0), Block("stone"))
+2. **House of specific architectural style**:  
+   • An 8×8×6 cottage with stone-brick foundation, cobblestone walls, stepped roof, chimney, and oak-trim beams.  
+   • Example style inspired by rustic medieval cottages.
 
-# Build a cube
-geometry.placeCuboid(editor, (0,80,2), (2,82,4), Block("oak_planks"))
-```
+3. **Interior & exterior decoration**:  
+   • Interior: randomly colored carpet, bed, chairs.  
+   • Exterior: oak fence, birch-tree garden, lantern poles, torches/hanging lanterns, guard villager.
 
+4. **Procedural variation (40% of grade)**:  
+   • Randomized lantern styles, tree canopies, carpet/bed colors, chimney campfire, variation in garden tree positions.  
+   • Every run produces a slightly different layout and color scheme.
 
-## Documentation
+5. **Scientific report**:  
+   • Includes terrain-evaluation plots, algorithmic explanations, variation examples, and conclusions (see `report.pdf`).
 
-You can find installation instructions, guides and an API reference in our
-documentation on [Read the Docs](https://gdpc.readthedocs.io)!
+---
 
+## Features Overview
+- **Terrain Analysis & Visualization**  
+  - `LandWaterheatmap()`: land vs. water heatmap (green/blue).  
+  - `height_scatter_plot()`: elevation scatter plot.  
+  - `suitability_heatmap()`: “build suitability” heatmap excluding water and boosting largest flat region.
 
-## Contributing
+- **Platform Selection** (`findingHeight()`):  
+  - Scans heightmap (Y > 63), excludes water, computes height variation, finds largest stable height band, picks median height and a random position within.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for information about how to contribute.
+- **Garden Generation** (`buildGarden()`):  
+  - Clears & levels 25×25 grass platform.  
+  - Surrounds with oak-fence border.  
+  - Plants birch trees with randomized trunk heights and layered oak-leaf canopies.  
+  - Ensures all corners are on solid ground.
 
+- **House Construction** (`buildHouse()`):  
+  - Stone-brick foundation and walls, cobblestone walls, stone-stepped roof.  
+  - Decorative elements: lantern poles, torches or hanging lanterns, oak beams, glass window, working oak door, chimney with campfire.  
+  - Interior furniture: randomized carpet and bed colors, chairs, guard villager NPC.
 
-## Acknowledgements
+- **Automation & Buffering**:  
+  - Uses GDPC’s buffered `Editor` for efficient batch edits.  
+  - Handles keyboard interrupt gracefully.
 
-GDPC was progressively developed with the help of various members of the GDMC community. Of special note are [Niki Gawlik](https://github.com/nikigawlik), who started both GDMC-HTTP and GDPC, and [Blinkenlights](https://github.com/flashing-blinkenlights), who previously maintained the project.
+---
+
+## Installation & Usage
+1. **Clone this repo**:  
+   ```bash
+   git clone https://github.com/YourUser/mgaia-housing-pcg.git
+   cd mgaia-housing-pcg
